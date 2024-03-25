@@ -9,6 +9,22 @@ import MainLayout from './layouts/MainLayout';
 import JobsPage from './pages/JobsPage';
 import NotFound from './pages/NotFound';
 import JobPage, { jobLoader } from './pages/JobPage';
+import AddJobPage from './pages/AddJobPage';
+import { Job } from './types';
+
+const addJob = (newJob: Job) => {
+  try {
+    fetch('/api/jobs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newJob),
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +32,7 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="/jobs" element={<JobsPage />} />
       <Route path="/jobs/:id" element={<JobPage />} loader={jobLoader} />
+      <Route path="/add-job" element={<AddJobPage addJobSubmit={addJob} />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
