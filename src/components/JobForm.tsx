@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 type Props = {
   job?: Job;
-  onSubmitForm: (job: Job) => void;
+  handleSubmit: (job: Job) => void;
   redirectTo: string;
 };
 
-const JobForm = ({ job, onSubmitForm, redirectTo }: Props) => {
+const JobForm = ({ job, handleSubmit, redirectTo }: Props) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState(job?.title || '');
   const [type, setType] = useState(job?.type || '');
@@ -47,7 +47,7 @@ const JobForm = ({ job, onSubmitForm, redirectTo }: Props) => {
       jobData.id = job.id;
     }
 
-    onSubmitForm(jobData);
+    handleSubmit(jobData);
     return navigate(redirectTo);
   };
 

@@ -1,18 +1,15 @@
 import { useLoaderData } from 'react-router-dom';
 import { Job } from '../types';
 import JobForm from '../components/JobForm';
+import { updateJob } from '../Utils/api';
 
-type Props = {
-  updateJobSubmit: (newJob: Job) => void;
-};
-
-const EditJobPage = ({ updateJobSubmit }: Props) => {
+const EditJobPage = () => {
   const job = useLoaderData() as Job;
 
   return (
     <JobForm
       job={job}
-      onSubmitForm={updateJobSubmit}
+      handleSubmit={updateJob}
       redirectTo={`/jobs/${job.id}`}
     />
   );

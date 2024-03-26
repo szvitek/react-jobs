@@ -7,12 +7,9 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import { FaLocationDot } from 'react-icons/fa6';
+import { deleteJob } from '../Utils/api';
 
-type Props = {
-  deleteJob: (id: string) => void;
-};
-
-const JobPage = ({ deleteJob }: Props) => {
+const JobPage = () => {
   const job = useLoaderData() as Job;
   const navigate = useNavigate();
 
