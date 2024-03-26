@@ -33,7 +33,7 @@ const addJob = async (newJob: Job) => {
 
 const updateJob = async (job: Job) => {
   try {
-    await fetch(`/api/jobs/${job.id}}`, {
+    await fetch(`/api/jobs/${job.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
